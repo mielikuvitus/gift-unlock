@@ -2,7 +2,7 @@
 
 A browser-based AR treasure hunt I built in 12 days for **weDISCOVR**'s in-person investor demo (April 2026), running on an iPhone 16 Pro in Safari. This is my portfolio version of that work: branding is placeholder and the backend runs on a mock API.
 
-**Live demo:** _coming soon_
+**Live demo:** [pixelation.io/gift-unlock](https://www.pixelation.io/gift-unlock)
 
 On a laptop, the demo runs inside a 3D iPhone with a simulated motion sensor. Move your cursor to tilt it. On a phone, the site opens the full app, which uses the phone's own camera and motion sensor.
 
