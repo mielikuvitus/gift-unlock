@@ -169,7 +169,7 @@ async function init() {
   screen.scale.setScalar(size.x / SCREEN_CSS_WIDTH);
   phone.add(screen);
 
-  stage.dataset.state = "ready";
+  document.querySelector(".showcase").dataset.state = "ready";
 }
 
 function resize() {

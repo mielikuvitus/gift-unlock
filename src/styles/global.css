@@ -161,6 +161,7 @@ body,
 }
 
 body {
+  visibility: visible;
   background: var(--color-background);
   color: #ffffff;
   font-family: var(--font-family);
