@@ -12,6 +12,10 @@ export default defineConfig(({ mode }) => {
     .filter(Boolean);
 
   return {
+    base: "/gift-unlock/",
+    build: {
+      outDir: "dist/gift-unlock",
+    },
     plugins: [
       basicSsl({
         domains: httpsSanExtra,

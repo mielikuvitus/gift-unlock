@@ -114,7 +114,7 @@ const GiftPreview = forwardRef(
       }
 
       loader.load(
-        "/3DModels/gift-optimized.glb",
+        `${import.meta.env.BASE_URL}3DModels/gift-optimized.glb`,
         (gltf) => {
           if (cancelled) {
             return;
@@ -136,7 +136,7 @@ const GiftPreview = forwardRef(
       );
 
       loader.load(
-        "/3DModels/amazingy01-optimized.glb",
+        `${import.meta.env.BASE_URL}3DModels/amazingy01-optimized.glb`,
         (gltf) => {
           if (cancelled) {
             return;

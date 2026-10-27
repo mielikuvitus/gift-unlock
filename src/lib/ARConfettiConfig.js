@@ -3,10 +3,10 @@ export const AR_CONFETTI_CONFIG = {
   modelTemplateSelection: "balanced",
   onlyModelIndex: null,
   modelPaths: [
-    "/3DModels/confetti.glb",
-    "/3DModels/confetti2.glb",
-    "/3DModels/confetti3.glb",
-    "/3DModels/confetti4.glb",
+    `${import.meta.env.BASE_URL}3DModels/confetti.glb`,
+    `${import.meta.env.BASE_URL}3DModels/confetti2.glb`,
+    `${import.meta.env.BASE_URL}3DModels/confetti3.glb`,
+    `${import.meta.env.BASE_URL}3DModels/confetti4.glb`,
   ],
   modelRotationConfigs: [
     {

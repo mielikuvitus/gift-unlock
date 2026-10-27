@@ -9,8 +9,8 @@ import {
 import { installDeviceSimulator } from "./deviceSimulator.js";
 import "./showcase.css";
 
-const MODEL_URL = "/3DModels/iphone_16_pro_max-optimized.glb";
-const APP_URL = "/";
+const MODEL_URL = `${import.meta.env.BASE_URL}3DModels/iphone_16_pro_max-optimized.glb`;
+const APP_URL = import.meta.env.BASE_URL;
 const SCREEN_MATERIAL_NAME = "screen.001";
 const GLASS_MATERIAL_NAME = "glass.002";
 const SCREEN_CSS_WIDTH = 440;

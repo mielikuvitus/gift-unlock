@@ -79,7 +79,7 @@ export const mockRun = {
   giftProduct: {
     id: "demo-product",
     name: "Product Name",
-    modelUrl: "/3DModels/amazingy01-optimized.glb",
+    modelUrl: `${import.meta.env.BASE_URL}3DModels/amazingy01-optimized.glb`,
     descriptionShort: "Short product description.",
   },
   upsellProducts: [],

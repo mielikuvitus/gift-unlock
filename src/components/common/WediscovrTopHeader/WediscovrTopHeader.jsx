@@ -7,7 +7,7 @@ export function WediscovrHeaderLogo({ className = "" }) {
   return (
     <img
       className={imgClass}
-      src="/logo.svg"
+      src={`${import.meta.env.BASE_URL}logo.svg`}
       alt="Logo"
       decoding="async"
     />
