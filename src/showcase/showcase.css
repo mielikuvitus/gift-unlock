@@ -36,6 +36,10 @@ body {
   background: var(--color-background);
 }
 
+.showcase__stage:not([data-state="ready"]) .showcase__screen {
+  visibility: hidden;
+}
+
 .showcase__canvas {
   position: absolute;
   inset: 0;

@@ -102,13 +102,13 @@ function emulateSafeArea(doc) {
   });
 }
 
-function createScreen(width, height) {
+function createScreen() {
   const iframe = document.createElement("iframe");
   iframe.className = "showcase__screen";
   iframe.src = APP_URL;
   iframe.title = "weDISCOVR Gift Unlock";
   iframe.width = SCREEN_CSS_WIDTH;
-  iframe.height = Math.round(SCREEN_CSS_WIDTH * (height / width));
+  iframe.height = SCREEN_CSS_WIDTH * 2;
   iframe.allow = "camera; accelerometer; gyroscope; fullscreen";
   iframe.addEventListener("load", () => {
     try {
@@ -163,8 +163,7 @@ async function init() {
 
   const bounds = screenBoundsInPhoneSpace(screenMesh);
   const size = bounds.getSize(new THREE.Vector3());
-  const iframe = createScreen(size.x, size.y);
-  screen = new CSS3DObject(iframe);
+  screen.element.height = Math.round(SCREEN_CSS_WIDTH * (size.y / size.x));
   bounds.getCenter(screen.position);
   screen.position.z = bounds.max.z;
   screen.scale.setScalar(size.x / SCREEN_CSS_WIDTH);
@@ -217,6 +216,8 @@ document.documentElement.addEventListener(
   () => (pointer.active = false),
 );
 window.addEventListener("resize", resize);
+screen = new CSS3DObject(createScreen());
+scene.add(screen);
 resize();
 renderer.setAnimationLoop(render);
 init();

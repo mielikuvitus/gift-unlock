@@ -60,6 +60,12 @@
         import("/src/main.jsx");
       } else {
         document.querySelector("#root").remove();
+        const model = document.createElement("link");
+        model.rel = "preload";
+        model.as = "fetch";
+        model.crossOrigin = "anonymous";
+        model.href = `${import.meta.env.BASE_URL}3DModels/iphone_16_pro_max-optimized.glb`;
+        document.head.append(model);
         import("/src/showcase/main.js");
       }
     </script>
