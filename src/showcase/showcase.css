@@ -97,6 +97,14 @@ body {
   font-weight: var(--text-section-label-weight);
 }
 
+.showcase__info-link {
+  color: var(--color-sky);
+  font-size: var(--text-section-label-size);
+  font-weight: var(--text-section-label-weight);
+  justify-self: start;
+  text-underline-offset: 0.2em;
+}
+
 @media (max-aspect-ratio: 23/20) {
   .showcase__info {
     display: none;
