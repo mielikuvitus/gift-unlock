@@ -55,10 +55,11 @@
       const showApp =
         window.top !== window ||
         matchMedia("(hover: none) and (pointer: coarse)").matches;
-      document.querySelector(showApp ? ".showcase" : "#root").remove();
       if (showApp) {
+        document.querySelector(".showcase").remove();
         import("/src/main.jsx");
       } else {
+        document.querySelector("#root").remove();
         import("/src/showcase/main.js");
       }
     </script>
