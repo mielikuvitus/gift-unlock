@@ -1,0 +1,83 @@
+.circle-button {
+  --circle-button-diameter: 5.5rem;
+
+  background: transparent;
+  border: 0;
+  bottom: calc(env(safe-area-inset-bottom) + var(--space-margin));
+  cursor: pointer;
+  left: 50%;
+  min-block-size: 44px;
+  min-inline-size: 44px;
+  padding: 0;
+  position: fixed;
+  transform: translate(-50%, -35px);
+  z-index: 171;
+}
+
+.circle-button--sm {
+  --circle-button-diameter: 3.25rem;
+}
+
+.circle-button__circle {
+  block-size: var(--circle-button-diameter);
+  display: block;
+  filter: var(--circle-button-shadow);
+  inline-size: var(--circle-button-diameter);
+  overflow: visible;
+  position: relative;
+  z-index: 1;
+}
+
+.circle-button__circle circle {
+  stroke: var(--color-gray-20);
+  stroke-width: 1px;
+}
+
+.circle-button__label {
+  align-items: center;
+  display: flex;
+  font-size: var(--text-hero-size);
+  font-weight: var(--text-hero-weight);
+  inset: 0;
+  justify-content: center;
+  pointer-events: none;
+  position: absolute;
+  z-index: 2;
+}
+
+.circle-button__label--long {
+  font-size: var(--text-section-label-size);
+  font-weight: var(--text-card-title-weight);
+  line-height: 1.12;
+  padding-inline: var(--space-margin-sm);
+  text-align: center;
+}
+
+.circle-button__content {
+  align-items: center;
+  display: flex;
+  inset: 0;
+  justify-content: center;
+  pointer-events: none;
+  position: absolute;
+  z-index: 2;
+}
+
+.circle-button__content svg {
+  block-size: min(2rem, calc(var(--circle-button-diameter) * 0.62));
+  display: block;
+  inline-size: auto;
+}
+
+.circle-button--sm .circle-button__content svg {
+  block-size: min(1.65rem, calc(var(--circle-button-diameter) * 0.58));
+}
+
+.circle-button--in-bar {
+  bottom: auto;
+  left: auto;
+  pointer-events: auto;
+  position: relative;
+  transform: none;
+  z-index: auto;
+}

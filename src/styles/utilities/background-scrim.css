@@ -1,0 +1,16 @@
+/* Fade to app background — token: --background-scrim-gradient (global.css) */
+.u-background-scrim {
+  background-image: var(--background-scrim-gradient);
+}
+
+.u-background-scrim--fill {
+  box-sizing: border-box;
+  inset: 0;
+  min-block-size: 100%;
+  min-inline-size: 100%;
+  position: absolute;
+}
+
+.u-background-scrim--non-interactive {
+  pointer-events: none;
+}

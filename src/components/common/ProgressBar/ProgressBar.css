@@ -1,0 +1,58 @@
+.progress-bar {
+  background: rgba(0, 102, 255, 0.15);
+  border: 2px solid var(--color-blue);
+  border-radius: 999px;
+  inline-size: min(90%, 15.5rem);
+  margin-inline: auto;
+  block-size: 22px;
+  overflow: hidden;
+}
+
+.progress-bar:has(.progress-bar__fill[data-animated="true"]) {
+  border-width: 2px;
+}
+
+/* trackPulse: outer shell so glow isn’t clipped by overflow:hidden on the track */
+.progress-bar--pulse-shell {
+  background: transparent;
+  block-size: auto;
+  overflow: visible;
+}
+
+.progress-bar--pulse-shell .progress-bar__track {
+  background: rgba(0, 102, 255, 0.15);
+  block-size: 26px;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.progress-bar__fill {
+  background-color: var(--color-blue);
+  block-size: 100%;
+  border-radius: 999px;
+  transition: width 0.4s ease;
+}
+
+.progress-bar__fill[data-animated="true"] {
+  background-image: repeating-linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.28) 0 4px,
+    transparent 4px 8px
+  );
+  background-size: 12px 12px;
+  background-position: 0 0;
+  animation: progress-bar-march 0.7s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .progress-bar__fill[data-animated="true"] {
+    animation: none;
+    background-image: none;
+  }
+}
+
+@keyframes progress-bar-march {
+  to {
+    background-position: 12px -12px;
+  }
+}

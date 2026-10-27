@@ -1,0 +1,98 @@
+.ar-gift-reveal {
+  background: var(--color-background);
+  height: 100dvh;
+  overflow: hidden;
+  position: relative;
+}
+
+.ar-gift-reveal__feed {
+  height: 100%;
+  inset: 0;
+  object-fit: cover;
+  position: absolute;
+  width: 100%;
+  z-index: 0;
+}
+
+.ar-gift-reveal > canvas {
+  cursor: pointer;
+  inset: 0;
+  pointer-events: auto;
+  position: absolute;
+  touch-action: manipulation;
+  z-index: 2;
+}
+
+.ar-gift-reveal__ui {
+  inset: 0;
+  pointer-events: none;
+  position: absolute;
+  z-index: 3;
+}
+
+.ar-gift-reveal__brand {
+  box-sizing: border-box;
+  inset-block-start: 0;
+  inset-inline: 0;
+  padding-block-start: calc(env(safe-area-inset-top) + var(--space-margin));
+  padding-inline: var(--space-margin);
+  pointer-events: none;
+  position: absolute;
+}
+
+.ar-gift-reveal__brand-logo {
+  block-size: calc(var(--text-hero-size) * 1.4);
+  display: block;
+  filter: brightness(0) invert(1);
+  inline-size: auto;
+  max-inline-size: 160px;
+  object-fit: contain;
+}
+
+.ar-gift-reveal__product-line {
+  font-size: var(--text-section-label);
+  font-weight: var(--text-section-label-weight);
+  margin-block-start: var(--space-margin-sm);
+  max-inline-size: min(90vw, 280px);
+  text-align: center;
+  text-wrap: pretty;
+}
+
+.ar-gift-reveal__tap-hint-host {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-margin-sm);
+  inset-block-end: 0;
+  inset-block-start: 70%;
+  inset-inline: 0;
+  justify-content: center;
+  padding-block-end: env(safe-area-inset-bottom);
+  padding-inline: var(--space-margin);
+  pointer-events: none;
+  position: absolute;
+}
+
+.ar-gift-reveal__tap-hint {
+  font-size: var(--text-card-title);
+  font-weight: var(--text-card-title-weight);
+  line-height: 1.25;
+  margin: 0;
+  max-inline-size: min(92vw, 360px);
+  text-align: center;
+  text-wrap: pretty;
+}
+
+.ar-gift-reveal__add-drops-error {
+  max-inline-size: min(92vw, 360px);
+  pointer-events: auto;
+}
+
+.ar-gift-reveal__battery-tap-layer {
+  box-sizing: border-box;
+  cursor: pointer;
+  padding-block: max(var(--space-margin), env(safe-area-inset-top, 0px))
+    max(var(--space-margin), env(safe-area-inset-bottom, 0px));
+  pointer-events: auto;
+  z-index: 5;
+}

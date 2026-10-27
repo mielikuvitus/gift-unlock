@@ -1,0 +1,16 @@
+.disc-coin-gl-view {
+  align-self: center;
+  flex-shrink: 0;
+}
+
+.disc-coin-gl-view__mount {
+  block-size: 3rem;
+  inline-size: 3rem;
+  position: relative;
+}
+
+.disc-coin-gl-view__canvas {
+  block-size: 100%;
+  display: block;
+  inline-size: 100%;
+}

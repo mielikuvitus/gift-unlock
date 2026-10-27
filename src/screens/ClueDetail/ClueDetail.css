@@ -1,0 +1,68 @@
+.clue-detail {
+  display: flex;
+  flex: 1 1 0;
+  flex-direction: column;
+  min-block-size: 0;
+  overflow: hidden;
+}
+
+.clue-detail .u-gift-run-shell__main {
+  overflow-x: hidden;
+  overflow-y: hidden;
+  overscroll-behavior-y: none;
+}
+
+.clue-detail__header {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-margin-sm);
+  text-align: center;
+}
+
+.clue-detail__footer-circle {
+  align-items: center;
+  box-sizing: border-box;
+  display: flex;
+  flex-shrink: 0;
+  inline-size: 100%;
+  justify-content: flex-end;
+  min-block-size: var(--button-primary-height);
+}
+
+.clue-detail .u-gift-run-shell__main-inner {
+  padding-block-start: calc(var(--space-margin-sm) + var(--space-margin));
+}
+
+.clue-detail .u-gift-run-shell__main::before {
+  flex: 0 0 0;
+  min-block-size: 0;
+}
+
+.clue-detail .u-gift-run-shell__main::after {
+  flex: 1 1 0;
+  min-block-size: 0;
+}
+
+.clue-detail__foot {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  gap: var(--space-margin);
+  justify-content: flex-end;
+  margin-block-start: auto;
+  min-block-size: 0;
+}
+
+.clue-detail__foot .clue-detail__map-embed {
+  align-self: center;
+  flex-shrink: 1;
+  inline-size: 100%;
+  margin-block-start: 0;
+  max-inline-size: 100%;
+}
+
+.clue-detail__foot .map-interactive-card__canvas-stack {
+  inline-size: min(calc(100% - 2 * var(--space-margin)), min(88vw, 38dvh));
+  margin-inline: auto;
+}

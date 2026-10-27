@@ -1,0 +1,183 @@
+/* Nunito is loaded from index.html for earlier fetch; keep token here. */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --viewport-width: 402px;
+  --viewport-height: 874px;
+  --safe-area-top: 59px;
+  --safe-area-bottom: 34px;
+
+  --space-margin-sm: 8px;
+  --space-margin: 16px;
+  --space-padding: 20px;
+  --space-padding-lg: 40px;
+
+  --color-blue: #0066ff;
+  --color-dark: #222222;
+  --color-background: #050a14;
+  --color-purple: #6968cb;
+  --color-orange: #ff5501;
+  --color-sky: #2c9ce4;
+  --color-gold: #fac938;
+  --color-green: #7ed957;
+
+  --color-gray-60: rgba(255, 255, 255, 0.6);
+  --color-gray-20: rgba(255, 255, 255, 0.2);
+
+  --font-family: "Nunito", sans-serif;
+
+  --text-secondary: var(--color-gray-60);
+  --text-secondary-size: 14px;
+  --text-secondary-weight: 700;
+
+  --text-disc-color: var(--color-gold);
+
+  --text-mega: 64px;
+  --text-mega-weight: 900;
+  --text-super-title: 36px;
+  --text-super-title-weight: 900;
+  --text-hero: 28px;
+  --text-hero-size: var(--text-hero);
+  --text-hero-weight: 800;
+  --text-screen-title: 22px;
+  --text-screen-title-size: var(--text-screen-title);
+  --text-screen-title-weight: 800;
+  --text-card-title: 16px;
+  --text-card-title-size: var(--text-card-title);
+  --text-card-title-weight: 700;
+  --text-section-label: 14px;
+  --text-section-label-size: var(--text-section-label);
+  --text-section-label-weight: 700;
+  --text-body: 12px;
+  --text-body-size: var(--text-body);
+  --text-body-weight: 400;
+  --text-small: 11px;
+  --text-small-size: var(--text-small);
+  --text-small-weight: 400;
+  --text-xsmall: 10px;
+  --text-xsmall-size: var(--text-xsmall);
+  --text-xsmall-weight: 600;
+  --text-tiny: 9px;
+  --text-tiny-size: var(--text-tiny);
+  --text-tiny-weight: 400;
+
+  --glass-fill: rgba(255, 255, 255, 0.06);
+  --glass-stroke: rgba(255, 255, 255, 0.08);
+  --glass-blur: 20px;
+  --glass-radius: 30px;
+  --glass-shadow: 0 8px 24px rgba(0, 0, 0, 0.26);
+
+  --button-border-width: 1px;
+  --button-inline-padding: var(--space-padding);
+  --button-gap: var(--space-margin);
+  --button-font-size: var(--text-card-title-size);
+  --button-font-weight: var(--text-card-title-weight);
+  --button-transition-duration: 150ms;
+  --button-transition-timing: ease;
+
+  --button-primary-height: 52px;
+  --button-primary-radius: 26px;
+  --button-primary-bg: var(--color-blue);
+  --button-primary-color: #ffffff;
+  --button-primary-border: var(--color-blue);
+  --circle-button-shadow: drop-shadow(0 6px 16px rgba(0, 38, 128, 0.55));
+  --pill-background-opacity-pct: 15%;
+  --button-primary-glow-y: 8px;
+  --button-primary-glow-blur: 18px;
+  --button-primary-glow-spread: -5px;
+  --button-primary-glow-color: color-mix(
+    in srgb,
+    var(--button-primary-bg) 55%,
+    transparent
+  );
+
+  --button-glass-height: 52px;
+  --button-glass-radius: 26px;
+  --button-glass-bg: var(--glass-fill);
+  --button-glass-border: var(--glass-stroke);
+  --button-glass-color: #ffffff;
+
+  --button-small-height: 36px;
+  --button-small-radius: 18px;
+  --button-small-bg: var(--color-blue);
+  --button-small-color: #ffffff;
+
+  --button-ghost-height-min: 28px;
+  --button-ghost-height-max: 30px;
+  --button-ghost-height: var(--button-ghost-height-max);
+  --button-ghost-radius: 14px;
+  --button-ghost-bg: rgba(255, 255, 255, 0.18);
+  --button-ghost-border: rgba(255, 255, 255, 0.3);
+  --button-ghost-color: #ffffff;
+
+  --tap-to-unlock-cta-size: 260px;
+  --tap-to-unlock-model-width: 220px;
+  --tap-to-unlock-model-height: 120px;
+
+  --dark-overlay-bg: rgba(5, 10, 20, 0.712);
+  --dark-overlay-blur: 2px;
+
+  /* Top-weighted fade to --color-background (strong at top, clear toward bottom) */
+  --background-scrim-gradient: linear-gradient(
+    to bottom,
+    color-mix(in srgb, var(--color-background) 100%, transparent) 0%,
+    color-mix(in srgb, var(--color-background) 88%, transparent) 28%,
+    color-mix(in srgb, var(--color-background) 70%, transparent) 75%,
+    color-mix(in srgb, var(--color-background) 70%, transparent) 100%
+  );
+
+  --disc-points-card-inline-max: 22rem;
+  --disc-points-card-min-block: min(52dvh, 36rem);
+
+  --gift-run-shell-bottom-slot: max(
+    calc(
+      env(safe-area-inset-bottom) + var(--space-margin) + 2 *
+        var(--space-margin) +
+        max(
+          44px,
+          2.5rem + var(--space-margin-sm) + calc(var(--text-body-size) * 1.2)
+        )
+    ),
+    calc(5.5rem + var(--space-margin-sm))
+  );
+}
+
+html {
+  font-family: var(--font-family);
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  background: var(--color-background);
+  color: #ffffff;
+  font-family: var(--font-family);
+}
+
+#root {
+  background: inherit;
+  font-family: var(--font-family);
+}
+
+button,
+input,
+textarea,
+select {
+  font-family: inherit;
+}
+
+.u-btn-primary {
+  box-shadow: 0 var(--button-primary-glow-y) var(--button-primary-glow-blur)
+    var(--button-primary-glow-spread) var(--button-primary-glow-color);
+}

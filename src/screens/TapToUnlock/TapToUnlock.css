@@ -1,0 +1,210 @@
+.tap-to-unlock {
+  background: inherit;
+  min-height: 100dvh;
+  overflow: hidden;
+  padding-block-end: calc(env(safe-area-inset-bottom) + var(--space-margin));
+  padding-block-start: calc(env(safe-area-inset-top) + var(--space-margin));
+  padding-inline: var(--space-margin);
+  position: relative;
+}
+
+.tap-to-unlock__scrim {
+  z-index: 1;
+}
+
+/* Centers glass behind the 3D model */
+.tap-to-unlock__model-glass-mount {
+  display: grid;
+  inset: 0;
+  place-items: center;
+  pointer-events: none;
+  position: absolute;
+  z-index: 1;
+}
+
+/* Above background + scrim (z-index 0–1), below WebGL + UI (z-index 2) */
+.tap-to-unlock__model-glass {
+  block-size: min(calc(var(--tap-to-unlock-model-height) + 11rem), 42dvh);
+  inline-size: min(
+    calc(var(--tap-to-unlock-model-width) + 5rem),
+    calc(100% - 2 * var(--space-margin))
+  );
+}
+
+.tap-to-unlock__content {
+  display: grid;
+  /* Middle row must not collapse to 0 (Safari): keeps air between glass/model band and CTA */
+  grid-template-rows:
+    minmax(0, 1fr)
+    minmax(var(--space-padding), 1fr)
+    minmax(0, 1fr);
+  justify-items: center;
+  min-block-size: calc(
+    100dvh - env(safe-area-inset-top) - env(safe-area-inset-bottom)
+  );
+  pointer-events: none;
+  position: relative;
+  text-align: center;
+  z-index: 2;
+}
+
+.tap-to-unlock__model {
+  inset: 0;
+  position: absolute;
+  z-index: 2;
+}
+
+.tap-to-unlock__confetti {
+  display: grid;
+  inset: 0;
+  place-items: center;
+  pointer-events: none;
+  position: absolute;
+  z-index: 1;
+}
+
+.tap-to-unlock__confetti:has(.confetti-blast--multi) {
+  place-items: stretch;
+}
+
+.tap-to-unlock__label {
+  align-self: end;
+  display: grid;
+  font-size: var(--text-card-title-size);
+  font-weight: var(--text-card-title-weight);
+  gap: var(--space-margin);
+  grid-row: 1;
+  margin: 0;
+}
+
+.tap-to-unlock__label-primary {
+  font-size: var(--text-hero-size);
+  font-weight: var(--text-screen-title-weight);
+  line-height: 1.1;
+}
+
+/* Outer: fixed layout footprint in the grid */
+.tap-to-unlock__label-logo {
+  align-items: center;
+  display: inline-flex;
+  flex-shrink: 0;
+  justify-content: center;
+  justify-self: center;
+  line-height: 0;
+  position: relative;
+  block-size: calc(var(--text-hero-size) * 1.8);
+  inline-size: min(90vw, 420px);
+}
+
+/* Centers the stack inside the fixed slot */
+.tap-to-unlock__label-logo-slot {
+  align-items: center;
+  display: flex;
+  flex: 1 1 auto;
+  justify-content: center;
+  min-block-size: 0;
+  min-inline-size: 0;
+  block-size: 100%;
+  inline-size: 100%;
+}
+
+/* Wraps logo + sparkles; size follows img (explicit height avoids % shrink bugs) */
+.tap-to-unlock__label-logo-stack {
+  display: inline-block;
+  line-height: 0;
+  max-inline-size: 100%;
+  position: relative;
+  vertical-align: middle;
+}
+
+.tap-to-unlock__label-logo-img {
+  block-size: calc(var(--text-hero-size) * 1.8);
+  display: block;
+  inline-size: auto;
+  max-inline-size: min(90vw, 420px);
+  object-fit: contain;
+  object-position: center;
+}
+
+/* Dark SVG/wordmark as <img> — same effect as former path { fill: #fff } */
+.tap-to-unlock__label-logo-img--white {
+  filter: brightness(0) invert(1);
+}
+
+.tap-to-unlock__label-secondary {
+  font-size: var(--text-screen-title-size);
+  font-weight: var(--text-screen-title-weight);
+  line-height: 1.2;
+  /* ~5 lines at 1.2 lh — label block height stays stable when copy grows; logo stays centered in row 1 */
+  min-block-size: 6em;
+  overflow-wrap: break-word;
+  text-wrap: pretty;
+}
+
+.tap-to-unlock__cta-stack {
+  align-items: stretch;
+  align-self: start;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-margin);
+  grid-row: 3;
+  inline-size: min(100%, var(--tap-to-unlock-cta-size));
+  /* Single spacer above CTA (Safari); avoid row-gap + padding stacking in Chrome */
+  padding-block-start: var(--space-margin);
+  pointer-events: none;
+}
+
+.tap-to-unlock__cta {
+  display: grid;
+  inline-size: 100%;
+  place-items: start center;
+  position: relative;
+}
+
+.tap-to-unlock__cta-button {
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  padding: 0;
+  pointer-events: auto;
+}
+
+.tap-to-unlock__redeem-error {
+  align-items: center;
+  color: var(--color-gold);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-margin-sm);
+  margin: 0;
+  text-align: center;
+}
+
+.tap-to-unlock__cta-text {
+  color: var(--button-primary-color);
+  display: inline-block;
+  font-size: var(--text-card-title-size);
+  font-weight: var(--text-card-title-weight);
+  margin-block-start: calc(var(--tap-to-unlock-cta-size) * 0.1);
+  pointer-events: none;
+}
+
+.tap-to-unlock__view-drops-btn {
+  inline-size: 100%;
+  pointer-events: auto;
+}
+
+/*
+ * Match .tap-to-unlock__model-glass width: glass uses % of mount; fixed DropZone uses vw − padding.
+ */
+.drop-zone.drop-zone--tap-to-unlock {
+  border-radius: var(--glass-radius);
+  inset-inline: unset;
+  bottom: calc(env(safe-area-inset-bottom) + clamp(0.5rem, 2.5dvh, 1.75rem));
+  left: 50%;
+  overflow: hidden;
+  translate: -50% 0;
+  inline-size: min(
+    calc(var(--tap-to-unlock-model-width) + 5rem),
+    calc(100dvw - 4 * var(--space-margin))
+  );
+}

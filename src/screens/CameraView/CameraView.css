@@ -1,0 +1,194 @@
+.camera-view {
+  position: fixed;
+  inset: 0;
+  background: #000;
+  z-index: 10;
+}
+
+.camera-view__feed {
+  height: 100%;
+  inset: 0;
+  object-fit: cover;
+  position: absolute;
+  width: 100%;
+  z-index: 0;
+}
+
+.camera-view__scan-canvas {
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  z-index: 1;
+}
+
+.camera-view__run-banner {
+  font-size: var(--text-section-label-size);
+  font-weight: var(--text-body-weight);
+  inset-block-start: calc(var(--space-margin) + env(safe-area-inset-top, 0px));
+  inset-inline: var(--space-margin);
+  line-height: 1.3;
+  margin: 0;
+  pointer-events: none;
+  position: absolute;
+  text-align: center;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.55);
+  z-index: 3;
+}
+
+.camera-view__scan-indicator {
+  aspect-ratio: 1;
+  box-sizing: border-box;
+  left: 50%;
+  max-width: calc(100% - 2 * var(--space-margin));
+  pointer-events: none;
+  position: absolute;
+  top: 50%;
+  translate: -50% -50%;
+  width: min(58vw, 42vh);
+  z-index: 2;
+}
+
+.camera-view__bracket {
+  border-color: inherit;
+  border-style: solid;
+  block-size: 28px;
+  inline-size: 28px;
+  position: absolute;
+}
+
+.camera-view__bracket--tl {
+  border-block-end-width: 0;
+  border-inline-end-width: 0;
+  border-block-start-width: 3px;
+  border-inline-start-width: 3px;
+  inset-block-start: 0;
+  inset-inline-start: 0;
+}
+
+.camera-view__bracket--tr {
+  border-block-end-width: 0;
+  border-inline-start-width: 0;
+  border-block-start-width: 3px;
+  border-inline-end-width: 3px;
+  inset-block-start: 0;
+  inset-inline-end: 0;
+}
+
+.camera-view__bracket--bl {
+  border-block-start-width: 0;
+  border-inline-end-width: 0;
+  border-block-end-width: 3px;
+  border-inline-start-width: 3px;
+  inset-block-end: 0;
+  inset-inline-start: 0;
+}
+
+.camera-view__bracket--br {
+  border-block-start-width: 0;
+  border-inline-start-width: 0;
+  border-block-end-width: 3px;
+  border-inline-end-width: 3px;
+  inset-block-end: 0;
+  inset-inline-end: 0;
+}
+
+.camera-view__scan-hint {
+  color: inherit;
+  font-size: var(--text-card-title-size);
+  font-weight: var(--text-card-title-weight);
+  inset-inline-start: 50%;
+  line-height: 1.3;
+  margin: 0;
+  margin-block-start: var(--space-margin-sm);
+  pointer-events: none;
+  position: absolute;
+  text-align: center;
+  top: 100%;
+  translate: -50% 0;
+  white-space: nowrap;
+  width: max-content;
+}
+
+.camera-view__scan-indicator .camera-view__fake-qr {
+  inset-inline-start: 50%;
+  margin-block-start: calc(
+    var(--space-margin-sm) + var(--text-card-title-size) * 1.3 +
+      var(--space-margin)
+  );
+  pointer-events: auto;
+  position: absolute;
+  top: 100%;
+  translate: -50% 0;
+  white-space: nowrap;
+}
+
+.camera-view__fake-qr:active {
+  opacity: 0.8;
+  transform: scale(0.98);
+}
+
+.camera-view__clue-overlay {
+  background: var(--color-background);
+  box-sizing: border-box;
+  inset: 0;
+  min-block-size: 100%;
+  pointer-events: auto;
+  position: absolute;
+  transform: translateZ(0);
+  z-index: 4;
+}
+
+.camera-view__clue-detail {
+  flex: 1 1 0;
+  max-block-size: 100%;
+  min-block-size: 0;
+  min-inline-size: 0;
+}
+
+.camera-view__bottom-bar {
+  align-items: center;
+  box-sizing: border-box;
+  display: flex;
+  inset-block-end: 0;
+  inset-inline: 0;
+  justify-content: space-between;
+  padding-block-end: calc(
+    env(safe-area-inset-bottom) + var(--space-margin)
+  );
+  padding-block-start: var(--space-margin-sm);
+  padding-inline: calc(var(--space-margin) + var(--space-margin-sm));
+  pointer-events: none;
+  position: absolute;
+  z-index: 5;
+}
+
+.camera-view__bottom-logo {
+  block-size: 2.35rem;
+  display: block;
+  inline-size: auto;
+  max-inline-size: min(12rem, 55vw);
+  object-fit: contain;
+  object-position: center;
+  pointer-events: auto;
+}
+
+.camera-view--blocked {
+  background: var(--color-background);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-margin);
+  align-items: center;
+  justify-content: center;
+  padding: 0 var(--space-margin);
+}
+
+.camera-view__checkpoint-error {
+  z-index: 6;
+}
+
+.camera-view__battery-idle {
+  cursor: pointer;
+}

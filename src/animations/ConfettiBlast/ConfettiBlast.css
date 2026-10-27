@@ -1,0 +1,45 @@
+.confetti-blast {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.confetti-blast--multi {
+  block-size: 100%;
+  inline-size: 100%;
+  min-block-size: 300px;
+  position: relative;
+}
+
+.confetti-blast__layer {
+  align-items: center;
+  display: flex;
+  inset: 0;
+  justify-content: center;
+  pointer-events: none;
+  position: absolute;
+}
+
+.confetti-blast__stage {
+  height: 300px;
+  position: relative;
+  width: 300px;
+}
+
+.confetti-piece {
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.confetti-piece svg {
+  width: calc(12px * var(--piece-scale, 1));
+  height: auto;
+  display: block;
+}
+
+.confetti-piece[data-type="rec"] svg {
+  width: calc(12px * 1.04);
+}

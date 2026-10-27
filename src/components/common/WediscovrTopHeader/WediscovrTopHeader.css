@@ -1,0 +1,16 @@
+.wediscovr-top-header {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-margin-sm);
+  text-align: center;
+}
+
+.wediscovr-top-header__logo {
+  block-size: 2.35rem;
+  display: block;
+  inline-size: auto;
+  max-inline-size: min(12rem, 55vw);
+  object-fit: contain;
+  object-position: center;
+}

@@ -1,0 +1,63 @@
+/* Matches TapHintLoop icon scale + .ar-gift-reveal__tap-hint typography (--tokens only). */
+.gift-drop-success {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-margin-sm);
+  inset: auto;
+  justify-content: center;
+  pointer-events: none;
+  position: relative;
+  text-align: center;
+  z-index: auto;
+}
+
+.gift-drop-success__icon {
+  align-items: center;
+  background: transparent;
+  border: 1.5px solid var(--color-green);
+  border-radius: 50%;
+  box-sizing: border-box;
+  display: flex;
+  block-size: min(8.5dvh, calc(var(--space-margin) * 2.75));
+  inline-size: min(17vw, calc(var(--space-margin) * 2.75));
+  justify-content: center;
+}
+
+.gift-drop-success__check {
+  block-size: 75%;
+  color: var(--color-green);
+  inline-size: 75%;
+  max-block-size: 100%;
+  max-inline-size: 100%;
+}
+
+.gift-drop-success__check path {
+  animation: gift-drop-success-tick-draw var(--gift-drop-tick-draw-ms) ease
+    forwards;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gift-drop-success__check path {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes gift-drop-success-tick-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.gift-drop-success__text {
+  color: var(--color-green);
+  font-family: var(--font-family);
+  font-size: var(--text-card-title);
+  font-weight: var(--text-card-title-weight);
+  line-height: 1.25;
+  margin: 0;
+  max-inline-size: min(92vw, 360px);
+}

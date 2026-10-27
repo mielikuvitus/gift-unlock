@@ -1,0 +1,71 @@
+.tap-hint-loop {
+  display: inline-grid;
+  line-height: 0;
+  max-inline-size: min(22vw, calc(var(--space-margin) * 3.5));
+  place-items: center;
+}
+
+.tap-hint-loop__icon {
+  grid-area: 1 / 1;
+  block-size: min(11dvh, calc(var(--space-margin) * 3.5));
+  display: block;
+  inline-size: min(22vw, calc(var(--space-margin) * 3.5));
+  line-height: 0;
+  max-inline-size: 100%;
+}
+
+.tap-hint-loop__icon--first {
+  opacity: 1;
+  animation: tap-hint-loop-first 3s ease-in-out infinite;
+}
+
+.tap-hint-loop__icon--second {
+  opacity: 0;
+  animation: tap-hint-loop-second 3s ease-in-out infinite;
+}
+
+@keyframes tap-hint-loop-first {
+  0%,
+  30% {
+    opacity: 1;
+  }
+
+  38%,
+  62% {
+    opacity: 0;
+  }
+
+  70%,
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes tap-hint-loop-second {
+  0%,
+  30% {
+    opacity: 0;
+  }
+
+  38%,
+  62% {
+    opacity: 1;
+  }
+
+  70%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tap-hint-loop__icon--first {
+    animation: none;
+    opacity: 0;
+  }
+
+  .tap-hint-loop__icon--second {
+    animation: none;
+    opacity: 1;
+  }
+}

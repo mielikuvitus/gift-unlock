@@ -1,0 +1,122 @@
+.u-glass {
+  background: var(--glass-fill);
+  border: var(--button-border-width) solid var(--glass-stroke);
+  border-radius: var(--glass-radius);
+  box-shadow: var(--glass-shadow);
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  backdrop-filter: blur(var(--glass-blur));
+}
+
+.u-glass-card {
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  backdrop-filter: blur(var(--glass-blur));
+  background: var(--glass-fill);
+  border: 1px solid var(--glass-stroke);
+  border-radius: var(--glass-radius);
+  box-shadow: var(--glass-shadow);
+}
+
+.u-glass-card--absolute-fill {
+  inset: 0;
+  pointer-events: none;
+  position: absolute;
+  z-index: 0;
+}
+
+.u-glass-card--warning {
+  -webkit-backdrop-filter: blur(calc(var(--glass-blur) * 1.5));
+  backdrop-filter: blur(calc(var(--glass-blur) * 1.5));
+  background: color-mix(in srgb, var(--color-gold) 5%, transparent);
+  border-color: var(--color-gold);
+}
+
+.u-glass-warning-card {
+  color: var(--color-gold);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-margin);
+  max-width: 360px;
+  padding: var(--space-padding);
+  width: 100%;
+}
+
+.u-glass-warning-card__icon-wrap {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.u-glass-warning-card__icon {
+  block-size: 2.75rem;
+  display: block;
+  flex-shrink: 0;
+  inline-size: 2.75rem;
+  overflow: visible;
+}
+
+.u-glass-warning-card__title {
+  color: inherit;
+  font-family: var(--font-family);
+  font-size: var(--text-screen-title-size);
+  font-weight: var(--text-screen-title-weight);
+  line-height: 1.2;
+  margin: 0;
+  overflow-wrap: break-word;
+  text-align: center;
+  text-wrap: pretty;
+}
+
+.u-glass-warning-card__warning {
+  color: var(--text-secondary);
+  font-family: var(--font-family);
+  font-size: var(--text-card-title-size);
+  font-weight: var(--text-body-weight);
+  line-height: 1.6;
+  margin: 0;
+  margin-block-end: var(--space-margin-sm);
+  overflow-wrap: break-word;
+  text-align: center;
+  text-wrap: pretty;
+}
+
+.u-glass-warning-card__battery-resume {
+  display: block;
+  margin-block-start: var(--space-margin-sm);
+}
+
+.u-glass-warning-card__steps {
+  color: var(--text-secondary);
+  font-family: var(--font-family);
+  font-size: var(--text-card-title-size);
+  font-weight: var(--text-body-weight);
+  line-height: 1.5;
+  list-style: decimal outside;
+  list-style-type: decimal;
+  margin: 0;
+  margin-block-end: var(--space-margin-sm);
+  padding-inline: var(--space-margin-sm);
+  padding-inline-start: calc(var(--space-margin-sm) + 2em);
+  text-align: start;
+}
+
+.u-glass-warning-card__steps li {
+  padding-inline-start: 0.4em;
+}
+
+.u-glass-warning-card__steps li + li {
+  margin-block-start: 0.75rem;
+}
+
+.u-glass-warning-card__steps li::marker {
+  color: var(--color-gold);
+  font-variant-numeric: tabular-nums;
+  font-weight: var(--text-card-title-weight);
+}
+
+.u-glass-warning-card__btn {
+  width: 100%;
+}
+
+.u-glass-warning-card .u-btn-glass {
+  padding-inline: calc(var(--space-padding) + 1px);
+}

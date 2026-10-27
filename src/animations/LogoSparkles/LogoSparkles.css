@@ -1,0 +1,105 @@
+/* Group: covers the logo (parent must be position: relative). Move all sparkles via this block. */
+/* span + display:block — valid inside <p>; div would break HTML / hydration */
+.logo-sparkles {
+  display: block;
+  inset: 0;
+  pointer-events: none;
+  position: absolute;
+}
+
+/* White sparkles: top-right, bottom-left (1s stagger), middle-right (2s delay); 1s animate + 2s pause */
+.logo-sparkles__sparkle {
+  block-size: 18px;
+  display: grid;
+  inline-size: 18px;
+  place-items: center;
+  pointer-events: none;
+  position: absolute;
+}
+
+.logo-sparkles__sparkle--tr {
+  inset-block-start: -14px;
+  inset-inline-end: 6%;
+}
+
+.logo-sparkles__sparkle--bl {
+  inset-block-end: -7px;
+  inset-inline-start: 33px;
+}
+
+.logo-sparkles__sparkle--mr {
+  inset-block-start: 50%;
+  inset-inline-end: -15px;
+  transform: translateY(-50%);
+}
+
+.logo-sparkles__sparkle-core {
+  animation: logo-sparkles-twinkle 3s ease-out infinite;
+  block-size: 14px;
+  inline-size: 14px;
+  position: relative;
+}
+
+.logo-sparkles__sparkle-core--delay {
+  animation-delay: 1s;
+}
+
+.logo-sparkles__sparkle-core--delay-2s {
+  animation-delay: 2s;
+  /* Hide during 2s wait: use first keyframe (opacity 0) before animation runs */
+  animation-fill-mode: backwards;
+}
+
+.logo-sparkles__sparkle-core::before,
+.logo-sparkles__sparkle-core::after {
+  background: #ffffff;
+  border-radius: 1px;
+  content: "";
+  left: 50%;
+  position: absolute;
+  top: 50%;
+}
+
+.logo-sparkles__sparkle-core::before {
+  block-size: 14px;
+  inline-size: 2px;
+  margin-block-start: -7px;
+  margin-inline-start: -1px;
+}
+
+.logo-sparkles__sparkle-core::after {
+  block-size: 2px;
+  inline-size: 14px;
+  margin-block-start: -1px;
+  margin-inline-start: -7px;
+}
+
+@keyframes logo-sparkles-twinkle {
+  0%,
+  100% {
+    opacity: 0;
+    transform: scale(0.35);
+  }
+
+  8% {
+    opacity: 1;
+  }
+
+  28% {
+    opacity: 1;
+    transform: scale(1.15);
+  }
+
+  /* First 1s of 3s cycle: scale up then fade out */
+  33.33% {
+    opacity: 0;
+    transform: scale(1.4);
+  }
+
+  /* 2s hold hidden before next loop */
+  33.34%,
+  99.99% {
+    opacity: 0;
+    transform: scale(0.35);
+  }
+}

@@ -1,0 +1,89 @@
+.u-glass-card-layout__column {
+  align-items: stretch;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-margin);
+  inline-size: min(100%, var(--disc-points-card-inline-max));
+  max-inline-size: 100%;
+}
+
+.u-glass-card-layout {
+  align-items: stretch;
+  display: flex;
+  flex-direction: column;
+  inline-size: min(100%, var(--disc-points-card-inline-max));
+  max-inline-size: 100%;
+  min-block-size: var(--disc-points-card-min-block);
+  position: relative;
+}
+
+.u-glass-card-layout--fluid {
+  inline-size: 100%;
+  max-inline-size: 100%;
+}
+
+.u-glass-card-layout--content-sized {
+  min-block-size: 0;
+}
+
+.u-glass-card-layout--content-sized .u-glass-card-layout__stage {
+  flex: 0 1 auto;
+  grid-template-rows: auto;
+  min-block-size: 0;
+}
+
+.u-glass-card-layout__stage {
+  display: grid;
+  flex: 1;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr auto;
+  justify-items: stretch;
+  min-block-size: 0;
+  padding-block: calc(var(--space-padding) * 1.25);
+  padding-inline: var(--space-padding);
+  position: relative;
+  row-gap: var(--space-margin);
+  z-index: 1;
+}
+
+.u-glass-card-layout__head {
+  align-items: center;
+  align-self: start;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-margin);
+  inline-size: 100%;
+  justify-self: center;
+  text-align: center;
+}
+
+.u-glass-card-layout__logo-wrap {
+  line-height: 0;
+  margin: 0;
+}
+
+.u-glass-card-layout__logo {
+  block-size: auto;
+  display: block;
+  inline-size: 150px;
+  max-inline-size: 100%;
+}
+
+.u-glass-card-layout__main {
+  align-items: center;
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-margin);
+  justify-content: center;
+  justify-self: stretch;
+  min-block-size: 0;
+  min-inline-size: 0;
+  text-align: center;
+}
+
+.u-glass-card-layout__foot {
+  justify-self: center;
+  margin: 0;
+  max-inline-size: 100%;
+}

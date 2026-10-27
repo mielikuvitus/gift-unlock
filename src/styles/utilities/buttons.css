@@ -1,0 +1,55 @@
+.u-btn-primary,
+.u-btn-glass,
+.u-btn-small,
+.u-btn-ghost {
+  align-items: center;
+  border: var(--button-border-width) solid transparent;
+  cursor: pointer;
+  display: inline-flex;
+  font-size: var(--button-font-size);
+  font-weight: var(--button-font-weight);
+  gap: var(--button-gap);
+  justify-content: center;
+  padding-inline: var(--button-inline-padding);
+  transition:
+    transform var(--button-transition-duration) var(--button-transition-timing),
+    opacity var(--button-transition-duration) var(--button-transition-timing);
+}
+
+.u-btn-primary {
+  background: var(--button-primary-bg);
+  border-radius: var(--button-primary-radius);
+  color: var(--button-primary-color);
+  height: var(--button-primary-height);
+}
+
+.u-btn-glass {
+  background: var(--button-glass-bg);
+  border-color: var(--button-glass-border);
+  border-radius: var(--button-glass-radius);
+  color: var(--button-glass-color);
+  height: var(--button-glass-height);
+}
+
+.u-btn-small {
+  background: var(--button-small-bg);
+  border-radius: var(--button-small-radius);
+  color: var(--button-small-color);
+  height: var(--button-small-height);
+}
+
+.u-btn-ghost {
+  background: var(--button-ghost-bg);
+  border-color: var(--button-ghost-border);
+  border-radius: var(--button-ghost-radius);
+  color: var(--button-ghost-color);
+  height: var(--button-ghost-height);
+}
+
+.circle-button.u-circle-button--active {
+  cursor: pointer;
+}
+
+.circle-button.u-circle-button--active .circle-button__label {
+  color: var(--button-primary-color);
+}

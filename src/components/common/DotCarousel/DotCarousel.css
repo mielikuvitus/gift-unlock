@@ -1,0 +1,128 @@
+.dot-carousel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-margin-sm);
+  width: 100%;
+}
+
+.dot-carousel__dots {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-margin-sm);
+  justify-content: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.dot-carousel__dot {
+  background: var(--color-gray-20);
+  block-size: 0.5rem;
+  border-radius: 50%;
+  flex-shrink: 0;
+  inline-size: 0.5rem;
+  list-style: none;
+}
+
+.dot-carousel__dot--active {
+  background: var(--color-blue);
+}
+
+.dot-carousel__stop-line {
+  color: inherit;
+  font-size: var(--text-section-label-size);
+  font-weight: var(--text-body-weight);
+  line-height: 1.35;
+  margin: 0;
+  text-align: center;
+}
+
+.dot-carousel__panel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-margin-sm);
+  width: 100%;
+}
+
+.dot-carousel__viewport {
+  inline-size: 100%;
+}
+
+.dot-carousel__viewport--snap {
+  container-name: dot-carousel-view;
+  container-type: inline-size;
+  -webkit-overflow-scrolling: touch;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.dot-carousel__viewport--snap::-webkit-scrollbar {
+  display: none;
+}
+
+.dot-carousel__track {
+  display: flex;
+}
+
+.dot-carousel__slide {
+  flex: 0 0 100cqi;
+  max-inline-size: 100%;
+  min-inline-size: 0;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+.dot-carousel__slide-inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-margin);
+  width: 100%;
+}
+
+.dot-carousel__clue-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-margin-sm);
+  width: 100%;
+}
+
+.dot-carousel__clue-label {
+  font-size: var(--text-screen-title-size);
+  font-weight: var(--text-screen-title-weight);
+  margin: 0;
+}
+
+.dot-carousel__clue-text {
+  font-size: var(--text-card-title-size);
+  font-weight: var(--text-body-weight);
+  line-height: 1.35;
+  margin: 0;
+}
+
+.dot-carousel__disc-row {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  inline-size: fit-content;
+  justify-content: center;
+  margin-inline: auto;
+  max-inline-size: 100%;
+}
+
+.dot-carousel__disc {
+  flex: 0 1 auto;
+  max-inline-size: 100%;
+  min-inline-size: 0;
+  text-align: start;
+}
+
+.dot-carousel__disc-text {
+  color: var(--text-disc-color);
+  font-size: var(--text-section-label-size);
+  font-weight: var(--text-body-weight);
+  line-height: 1.35;
+  margin: 0;
+  text-wrap: pretty;
+}

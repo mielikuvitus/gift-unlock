@@ -1,0 +1,22 @@
+/* Semi-transparent dark frosted layer — background/camera stays visible; tune via tokens */
+.u-dark-overlay {
+  -webkit-backdrop-filter: blur(var(--dark-overlay-blur));
+  backdrop-filter: blur(var(--dark-overlay-blur));
+  background: var(--dark-overlay-bg);
+}
+
+.u-dark-overlay--fill {
+  inset: 0;
+  position: absolute;
+}
+
+.u-dark-overlay--non-interactive {
+  pointer-events: none;
+}
+
+.u-dark-overlay--center {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  padding: 0 var(--space-margin);
+}

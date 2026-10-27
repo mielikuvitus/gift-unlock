@@ -1,0 +1,60 @@
+.drop-zone {
+  --drop-zone-accent: var(--color-blue);
+  position: fixed;
+  inset-inline: 0;
+  bottom: 0;
+  width: auto;
+  height: max(92px, 17vh);
+  border: 1.5px dashed transparent;
+  box-sizing: border-box;
+  background: transparent;
+  pointer-events: none;
+  opacity: 0;
+  transition: border-color 0.2s, opacity 0.2s;
+  z-index: 100;
+}
+
+.drop-zone__inner {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2em;
+  pointer-events: none;
+  color: var(--drop-zone-accent);
+  z-index: 1;
+}
+
+.drop-zone__label {
+  margin: 0;
+  font-family: var(--font-family);
+  font-size: var(--text-card-title-size);
+  font-weight: var(--text-card-title-weight);
+  color: var(--drop-zone-accent);
+  -webkit-text-stroke: 1px var(--drop-zone-accent);
+  text-align: center;
+  white-space: nowrap;
+}
+
+.drop-zone__icon {
+  display: block;
+  width: clamp(26px, 7vmin, 40px);
+  height: auto;
+  flex-shrink: 0;
+  color: inherit;
+  fill: currentColor;
+}
+
+.drop-zone.is-active {
+  background: color-mix(in srgb, var(--drop-zone-accent) 15%, transparent);
+  border-color: var(--drop-zone-accent);
+  opacity: 1;
+}
+
+.drop-zone.is-active.is-over {
+  --drop-zone-accent: var(--color-green);
+}

@@ -1,0 +1,19 @@
+.u-live-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: calc(var(--space-margin-sm) * 0.625);
+  padding: calc(var(--space-margin-sm) / 2) var(--space-margin-sm);
+  background: color-mix(in srgb, var(--color-green) 22%, transparent);
+  border-radius: 12px;
+  outline: 1px solid color-mix(in srgb, var(--color-green) 55%, transparent);
+  outline-offset: -1px;
+}
+
+.u-live-pill__label {
+  font-size: var(--text-xsmall-size);
+  font-family: var(--font-family);
+  font-weight: var(--text-card-title-weight);
+  color: var(--color-green);
+  word-wrap: break-word;
+}

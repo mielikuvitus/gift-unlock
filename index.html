@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/svg+xml" href="/logo.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#050a14" />
+    <title>weDISCOVR Gift Unlock</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <main class="showcase">
+      <div class="showcase__stage">
+        <canvas class="showcase__canvas" aria-hidden="true"></canvas>
+      </div>
+      <aside class="showcase__info u-glass-card">
+        <p class="showcase__info-eyebrow">Interactive demo</p>
+        <h1 class="showcase__info-title">AR Gift Unlock</h1>
+        <p class="showcase__info-text">
+          You're in the demo space. At each stop you get a clue and a 3D map of
+          the space. Your job is to find the next QR code to unlock a new clue.
+        </p>
+        <p class="showcase__info-text">
+          Clear all three stops to unlock the gift in AR.
+        </p>
+        <ul class="showcase__info-tips">
+          <li>Use the <strong>DEMO only: use fake QR</strong> button to skip scanning.</li>
+          <li>Move your cursor to tilt the phone, just like moving a real iPhone.</li>
+        </ul>
+      </aside>
+      <footer class="showcase__credit">
+        <p>
+          On a real iPhone the experience uses the device's back camera. Here it
+          uses your computer's front camera instead.
+        </p>
+        <p>
+          "<a href="https://skfb.ly/pqWYx">iPhone 16 Pro Max</a>" by MajdyModels,
+          <a href="http://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>, modified
+        </p>
+      </footer>
+    </main>
+    <!--
+      Device routing for "/":
+      - Touch devices (phones, tablets) get the real app.
+      - Mouse/trackpad devices get the showcase, which embeds this same page in an iframe.
+      - Inside that iframe the app always loads, so the showcase never nests itself.
+    -->
+    <script type="module">
+      const showApp =
+        window.top !== window ||
+        matchMedia("(hover: none) and (pointer: coarse)").matches;
+      document.querySelector(showApp ? ".showcase" : "#root").remove();
+      if (showApp) {
+        import("/src/main.jsx");
+      } else {
+        import("/src/showcase/main.js");
+      }
+    </script>
+  </body>
+</html>

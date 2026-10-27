@@ -1,0 +1,31 @@
+.gift-run-screen {
+  align-items: center;
+  background: var(--color-background);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-family);
+  inset: 0;
+  justify-content: center;
+  padding-block-end: calc(env(safe-area-inset-bottom) + var(--space-margin));
+  padding-block-start: calc(env(safe-area-inset-top) + var(--space-margin));
+  padding-inline: var(--space-margin);
+  position: fixed;
+  text-align: center;
+}
+
+.gift-run-screen--disc-points {
+  justify-content: flex-start;
+}
+
+.gift-run-screen--disc-points .disc-points-progress {
+  align-self: center;
+  flex: 1 1 0;
+  inline-size: 100%;
+  max-inline-size: min(100%, var(--disc-points-card-inline-max));
+  min-block-size: 0;
+}
+
+.gift-run-screen__btn {
+  inline-size: 100%;
+}

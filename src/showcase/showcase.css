@@ -1,0 +1,116 @@
+@import "../styles/global.css";
+@import "../styles/utilities/glass.css";
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  overflow: hidden;
+}
+
+.showcase {
+  --showcase-screen-radius: 72px;
+  --showcase-phone-half-width: 19dvh;
+  --showcase-info-gap: var(--space-padding-lg);
+
+  position: relative;
+  height: 100dvh;
+}
+
+.showcase__stage {
+  position: absolute;
+  inset: 0;
+}
+
+.showcase__css-layer {
+  position: absolute;
+  inset: 0;
+}
+
+.showcase__screen {
+  display: block;
+  border: 0;
+  border-radius: var(--showcase-screen-radius);
+  background: var(--color-background);
+}
+
+.showcase__canvas {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.showcase__info {
+  display: grid;
+  gap: var(--space-margin);
+  inline-size: min(
+    22rem,
+    calc(50% - var(--showcase-phone-half-width) - 2 * var(--showcase-info-gap))
+  );
+  left: calc(50% + var(--showcase-phone-half-width) + var(--showcase-info-gap));
+  padding: var(--space-padding-lg) var(--space-padding);
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.showcase__info-eyebrow {
+  color: var(--color-sky);
+  font-size: var(--text-section-label-size);
+  font-weight: var(--text-section-label-weight);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.showcase__info-title {
+  font-size: var(--text-hero-size);
+  font-weight: var(--text-hero-weight);
+  line-height: 1.15;
+}
+
+.showcase__info-text {
+  font-size: var(--text-card-title-size);
+  line-height: 1.5;
+  text-wrap: pretty;
+}
+
+.showcase__info-tips {
+  color: var(--text-secondary);
+  display: grid;
+  font-size: var(--text-section-label-size);
+  gap: var(--space-margin-sm);
+  line-height: 1.45;
+  padding-inline-start: 1.2em;
+}
+
+.showcase__info-tips strong {
+  color: var(--color-gold);
+  font-weight: var(--text-section-label-weight);
+}
+
+@media (max-aspect-ratio: 23/20) {
+  .showcase__info {
+    display: none;
+  }
+}
+
+.showcase__credit {
+  display: grid;
+  gap: var(--space-margin-sm);
+  position: absolute;
+  inset-inline: 0;
+  bottom: calc(env(safe-area-inset-bottom) + var(--space-margin));
+  padding-inline: var(--space-margin);
+  font-size: var(--text-small-size);
+  color: var(--text-secondary);
+  text-align: center;
+}
+
+.showcase__credit a {
+  color: inherit;
+}

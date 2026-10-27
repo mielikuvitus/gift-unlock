@@ -1,0 +1,60 @@
+.sonar-rings {
+  display: block;
+  inset: 0;
+  overflow: visible;
+  pointer-events: none;
+  position: absolute;
+  z-index: 0;
+}
+
+.sonar-rings__pulse {
+  align-items: center;
+  animation: sonar-rings-expand 2.4s ease-out infinite;
+  block-size: 100%;
+  display: flex;
+  inline-size: 100%;
+  inset: 0;
+  justify-content: center;
+  position: absolute;
+  transform-origin: center;
+}
+
+.sonar-rings__pulse--2 {
+  animation-delay: 0.8s;
+}
+
+.sonar-rings__pulse--3 {
+  animation-delay: 1.6s;
+}
+
+.sonar-rings__svg {
+  block-size: 100%;
+  display: block;
+  inline-size: 100%;
+  overflow: visible;
+}
+
+.sonar-rings__svg circle {
+  fill: none;
+  stroke: var(--button-primary-color);
+  stroke-width: 0.25;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sonar-rings__pulse {
+    animation: none;
+    opacity: 0;
+  }
+}
+
+@keyframes sonar-rings-expand {
+  0% {
+    opacity: 0.55;
+    transform: scale(1);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(2.15);
+  }
+}

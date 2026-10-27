@@ -1,0 +1,90 @@
+.focus-animation {
+  --focus-stack-size: 1155px;
+  --focus-display-scale: 0.18;
+
+  display: flex;
+  justify-content: center;
+  margin-block-start: var(--space-margin-sm);
+  pointer-events: none;
+  width: 100%;
+}
+
+/* Layout box matches the *visual* size after scale (stack × scale). */
+.focus-animation__layout-wrap {
+  align-items: center;
+  display: flex;
+  height: calc(var(--focus-stack-size) * var(--focus-display-scale));
+  justify-content: center;
+  width: calc(var(--focus-stack-size) * var(--focus-display-scale));
+}
+
+/* Same pixel canvas as the stack coordinate space (1155 × 1155). */
+.focus-animation__viewport {
+  flex-shrink: 0;
+  height: var(--focus-stack-size);
+  position: relative;
+  transform: scale(var(--focus-display-scale));
+  transform-origin: center center;
+  width: var(--focus-stack-size);
+}
+
+.focus-animation__stack {
+  height: 100%;
+  inset: 0;
+  position: absolute;
+  width: 100%;
+}
+
+.focus-animation__layer {
+  display: block;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+}
+
+.focus-animation__layer--outer {
+  animation: focus-rotate-outer 28s linear infinite;
+  height: 1155px;
+  transform: translate(-50%, -50%);
+  width: 1155px;
+}
+
+.focus-animation__layer--inner {
+  animation: focus-rotate-inner 22s linear infinite;
+  height: 733px;
+  transform: translate(-50%, -50%);
+  width: 733px;
+}
+
+.focus-animation__layer--focus {
+  height: 1012px;
+  transform: translate(-50%, -50%);
+  width: 1013px;
+}
+
+@keyframes focus-rotate-outer {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@keyframes focus-rotate-inner {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+
+  to {
+    transform: translate(-50%, -50%) rotate(-360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .focus-animation__layer--outer,
+  .focus-animation__layer--inner {
+    animation: none;
+  }
+}
