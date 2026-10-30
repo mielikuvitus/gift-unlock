@@ -1,7 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { flushSync } from "react-dom";
-import { useNavigate } from "react-router-dom";
-import { createPageUrl } from "@/utils";
 import CameraView from "../CameraView/CameraView.jsx";
 import ClueDetail from "../ClueDetail/ClueDetail.jsx";
 import IntroView from "../IntroView/IntroView.jsx";
@@ -26,12 +24,12 @@ import {
 } from "../../lib/deriveRunState.js";
 import amazingyLogoUrl from "../../assets/amazingy-logo.svg?url";
 import { FLAGS } from "../../config/flags.js";
+import { notifyShowcaseStage } from "../../lib/notifyShowcaseStage.js";
 import { requestDeviceOrientationPermission } from "../../lib/requestDeviceOrientationPermission.js";
 import "../TapToUnlock/TapToUnlock.css";
 import "./GiftUnlock.css";
 
 function GiftUnlock() {
-  const navigate = useNavigate();
   const [stage, setStage] = useState("intro");
   const [motionPermission, setMotionPermission] = useState(null);
   /** Live `/getHunt` payload or mock fallback — same shape as API. */
@@ -45,6 +43,12 @@ function GiftUnlock() {
   /** Last `claimCheckpoint`: mock fallback — drives checkpoint DISC UI to use `runDerived` vs `runState`. */
   const [lastClaimUsedMock, setLastClaimUsedMock] = useState(false);
   const huntLoadStartedRef = useRef(false);
+
+  const clueNumber = claimedCheckpointIds.length + 1;
+
+  useEffect(() => {
+    notifyShowcaseStage(stage, clueNumber);
+  }, [stage, clueNumber]);
 
   useEffect(() => {
     let cancelled = false;
@@ -292,9 +296,9 @@ function GiftUnlock() {
               <button
                 className="u-btn-primary tap-to-unlock__view-drops-btn"
                 type="button"
-                onClick={() => navigate(createPageUrl("CaughtGift"))}
+                onClick={() => window.location.reload()}
               >
-                View Gift
+                Restart
               </button>
             }
             target={arFinalDiscMilestone.target}

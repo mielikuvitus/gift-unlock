@@ -9,6 +9,7 @@ import {
 } from "../../hooks/useCamera.js";
 import LocationGlyph from "../../assets/svg/location.svg?react";
 import LocationPinGlyph from "../../assets/svg/location-icon.svg?react";
+import { notifyShowcaseStage } from "../../lib/notifyShowcaseStage.js";
 import ClueDetail from "../ClueDetail/ClueDetail.jsx";
 import { formatCheckpointLabelForUser } from "./utils";
 import "./CameraView.css";
@@ -35,6 +36,15 @@ function CameraView({
   const qrRejectLogKeyRef = useRef("");
   const [checkpointError, setCheckpointError] = useState(null);
   const [clueOverlayOpen, setClueOverlayOpen] = useState(false);
+
+  const clueNumber = claimedCheckpointIds.length + 1;
+
+  useEffect(() => {
+    notifyShowcaseStage(
+      clueOverlayOpen ? "camera-clue" : "camera",
+      clueNumber,
+    );
+  }, [clueOverlayOpen, clueNumber]);
 
   function handleQrDetected(payload) {
     const [checkpointId] = payload.split(":");
@@ -130,6 +140,38 @@ function CameraView({
     </button>
   ) : null;
 
+  const clueControls = clueOverlayOpen ? (
+    <div className="camera-view__clue-overlay u-gift-run-shell">
+      <ClueDetail
+        className="camera-view__clue-detail"
+        checkpointsOrdered={checkpointsOrdered}
+        claimedCheckpointCount={claimedCheckpointIds.length}
+        footerExtra={
+          <div className="clue-detail__footer-circle">
+            <CircleButton
+              className="circle-button--in-bar"
+              size="sm"
+              onStart={() => setClueOverlayOpen(false)}
+              content={<LocationPinGlyph aria-hidden />}
+              aria-label="Close clue details"
+            />
+          </div>
+        }
+      />
+    </div>
+  ) : (
+    <div className="camera-view__bottom-bar">
+      <WediscovrHeaderLogo className="camera-view__bottom-logo" />
+      <CircleButton
+        className="circle-button--in-bar"
+        size="sm"
+        onStart={() => setClueOverlayOpen(true)}
+        content={<LocationGlyph aria-hidden />}
+        aria-label="Open clue details"
+      />
+    </div>
+  );
+
   if (showCard) {
     return (
       <div className="camera-view camera-view--blocked">
@@ -148,6 +190,7 @@ function CameraView({
           }}
         />
         {fakeQrButton}
+        {clueControls}
       </div>
     );
   }
@@ -183,38 +226,7 @@ function CameraView({
         <p className="camera-view__scan-hint">Scan QR to unlock</p>
         {fakeQrButton}
       </div>
-      {clueOverlayOpen ? (
-        <div className="camera-view__clue-overlay u-gift-run-shell">
-          <ClueDetail
-            className="camera-view__clue-detail"
-            checkpointsOrdered={checkpointsOrdered}
-            claimedCheckpointCount={claimedCheckpointIds.length}
-            footerExtra={
-              <div className="clue-detail__footer-circle">
-                <CircleButton
-                  className="circle-button--in-bar"
-                  size="sm"
-                  onStart={() => setClueOverlayOpen(false)}
-                  content={<LocationPinGlyph aria-hidden />}
-                  aria-label="Close clue details"
-                />
-              </div>
-            }
-          />
-        </div>
-      ) : null}
-      {clueOverlayOpen ? null : (
-        <div className="camera-view__bottom-bar">
-          <WediscovrHeaderLogo className="camera-view__bottom-logo" />
-          <CircleButton
-            className="circle-button--in-bar"
-            size="sm"
-            onStart={() => setClueOverlayOpen(true)}
-            content={<LocationGlyph aria-hidden />}
-            aria-label="Open clue details"
-          />
-        </div>
-      )}
+      {clueControls}
       {checkpointError ? (
         <div
           className="camera-view__checkpoint-error u-dark-overlay u-dark-overlay--fill u-dark-overlay--center"

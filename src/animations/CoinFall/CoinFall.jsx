@@ -6,7 +6,7 @@ import { MeshoptDecoder } from "three/examples/jsm/libs/meshopt_decoder.module.j
 import coinMp3Url from "../../assets/sounds/coin.mp3";
 import "./CoinFall.css";
 
-const COIN_MODEL_URL = `${import.meta.env.BASE_URL}3DModels/coin-new2.glb`;
+const COIN_MODEL_URL = `${import.meta.env.BASE_URL}3DModels/coin-new2-optimized.glb`;
 const COIN_SOUND_VOLUME = 0.45;
 
 const COIN_COUNT = 7;

@@ -8,8 +8,8 @@ import { createMapTapHintHandlers } from "../../../animations/MapTapHint/mapTapH
 import TapIcon from "../../../assets/svg/tap-icon.svg?react";
 import "./MapInteractiveCard.css";
 
-const MAP_MODEL_URL = `${import.meta.env.BASE_URL}3DModels/map-new.glb`;
-const LOCATION_MODEL_URL = `${import.meta.env.BASE_URL}3DModels/location.glb`;
+const MAP_MODEL_URL = `${import.meta.env.BASE_URL}3DModels/map-new-optimized.glb`;
+const LOCATION_MODEL_URL = `${import.meta.env.BASE_URL}3DModels/location-optimized.glb`;
 
 function placeLocationPinsOnMapAnchor(mapAnchor, locationScene, placements) {
   let added = null;

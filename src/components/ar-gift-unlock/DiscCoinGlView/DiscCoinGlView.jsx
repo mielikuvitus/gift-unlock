@@ -5,7 +5,7 @@ import { MeshoptDecoder } from "three/examples/jsm/libs/meshopt_decoder.module.j
 import { applyFloaterIdleMotion } from "../../../animations/FloaterIdleMotion/floaterIdleMotion.js";
 import "./DiscCoinGlView.css";
 
-const COIN_MODEL_URL = `${import.meta.env.BASE_URL}3DModels/coin-new2.glb`;
+const COIN_MODEL_URL = `${import.meta.env.BASE_URL}3DModels/coin-new2-optimized.glb`;
 
 function disposeObjectTree(root) {
   root.traverse((child) => {

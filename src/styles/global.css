@@ -132,6 +132,12 @@
     color-mix(in srgb, var(--color-background) 70%, transparent) 75%,
     color-mix(in srgb, var(--color-background) 70%, transparent) 100%
   );
+  --background-scrim-bottom-gradient: linear-gradient(
+    to top,
+    color-mix(in srgb, var(--color-background) 100%, transparent) 0%,
+    color-mix(in srgb, var(--color-background) 60%, transparent) 28%,
+    transparent 75%
+  );
 
   --disc-points-card-inline-max: 22rem;
   --disc-points-card-min-block: min(52dvh, 36rem);

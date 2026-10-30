@@ -3,7 +3,6 @@
   flex: 1 1 0;
   flex-direction: column;
   min-block-size: 0;
-  overflow: hidden;
 }
 
 .clue-detail .u-gift-run-shell__main {

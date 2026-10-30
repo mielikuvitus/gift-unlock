@@ -15,7 +15,8 @@
 }
 
 .intro-view__gift-unlock-overlay {
-  background-image: var(--background-scrim-gradient);
+  background-image:
+    var(--background-scrim-bottom-gradient), var(--background-scrim-gradient);
   inset: 0;
   pointer-events: none;
   position: absolute;
@@ -132,4 +133,27 @@
 .intro-view__open-camera {
   inline-size: 100%;
   margin: 0;
+}
+
+.intro-view__start-hunt {
+  animation: intro-view-start-hunt-pulse 2s ease-in-out infinite;
+}
+
+@keyframes intro-view-start-hunt-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 6px color-mix(in srgb, var(--color-blue) 25%, transparent);
+  }
+
+  50% {
+    box-shadow:
+      0 0 14px color-mix(in srgb, var(--color-blue) 70%, transparent),
+      0 0 28px color-mix(in srgb, var(--color-blue) 40%, transparent);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .intro-view__start-hunt {
+    animation: none;
+  }
 }

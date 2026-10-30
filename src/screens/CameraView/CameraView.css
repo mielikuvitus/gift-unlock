@@ -130,7 +130,7 @@
   transform: scale(0.98);
 }
 
-.camera-view__clue-overlay {
+.camera-view .camera-view__clue-overlay {
   background: var(--color-background);
   box-sizing: border-box;
   inset: 0;

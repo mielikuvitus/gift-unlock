@@ -7,6 +7,7 @@ import {
   CSS3DRenderer,
 } from "three/examples/jsm/renderers/CSS3DRenderer.js";
 import { installDeviceSimulator } from "./deviceSimulator.js";
+import { installModelViewer } from "./modelViewer.js";
 import "./showcase.css";
 
 const MODEL_URL = `${import.meta.env.BASE_URL}3DModels/iphone_16_pro_max-optimized.glb`;
@@ -20,10 +21,50 @@ const MAX_PITCH = THREE.MathUtils.degToRad(15);
 const REST_BETA = 45;
 const SENSOR_GAIN = 2;
 const SAFE_AREA_ENV = /env\(\s*safe-area-inset-(top|bottom|left|right)\s*(?:,[^)]*)?\)/g;
+const LEFT_CARDS = {
+  demoarea: {
+    label: "Demo space",
+    caption: "Drag to orbit, scroll to zoom",
+    description: "3D scan of the demo space",
+    url: `${import.meta.env.BASE_URL}3DModels/demoarea-optimized.glb`,
+    unlit: true,
+    viewDirection: [0.9, 1.1, 1.3],
+    distance: 1.93,
+    maxPolarAngle: THREE.MathUtils.degToRad(80),
+  },
+  coin: {
+    label: "DISC coin",
+    caption: "Drag to orbit",
+    description: "3D DISC coin",
+    url: `${import.meta.env.BASE_URL}3DModels/coin-new2-optimized.glb`,
+    distance: 2.4,
+    zoom: false,
+  },
+  pin: {
+    label: "Location pin",
+    caption: "Drag to orbit",
+    description: "3D location pin",
+    url: `${import.meta.env.BASE_URL}3DModels/location-optimized.glb`,
+    distance: 2.4,
+    zoom: false,
+  },
+  "camera-access": {},
+};
+const STAGE_LEFT_CARDS = {
+  intro2: "demoarea",
+  camera: null,
+  "camera-2": "camera-access",
+  "camera-clue": null,
+  "disc-checkpoint": "coin",
+  "disc-checkpoint-3": null,
+  "clue-detail-3": "pin",
+  "clue-detail": null,
+};
 
 const prefersReducedMotion = window.matchMedia(
   "(prefers-reduced-motion: reduce)",
 ).matches;
+const sideCardsHidden = window.matchMedia("(max-aspect-ratio: 23/20)");
 
 const stage = document.querySelector(".showcase__stage");
 const canvas = document.querySelector(".showcase__canvas");
@@ -58,6 +99,9 @@ const screenPoint = new THREE.Vector3();
 let followAmount = 0;
 let screen = null;
 let simulator = null;
+let wantedLeftCard = null;
+let shownLeftCard = null;
+let disposeModelViewer = null;
 
 function trackPointer(clientX, clientY) {
   pointer.x = THREE.MathUtils.clamp((clientX / stage.clientWidth) * 2 - 1, -1, 1);
@@ -172,6 +216,47 @@ async function init() {
   document.querySelector(".showcase").dataset.state = "ready";
 }
 
+function showInfoStep(keys) {
+  const steps = [...document.querySelectorAll(".showcase__info-step")];
+  const name = keys.find((key) =>
+    steps.some((step) => step.dataset.step === key),
+  );
+  if (!name) return;
+  steps.forEach((step) => (step.hidden = step.dataset.step !== name));
+}
+
+function syncLeftCard() {
+  const name = sideCardsHidden.matches ? null : wantedLeftCard;
+  if (name === shownLeftCard) return;
+  disposeModelViewer?.();
+  disposeModelViewer = null;
+  shownLeftCard = name;
+
+  const showcase = document.querySelector(".showcase");
+  if (!name) {
+    delete showcase.dataset.leftCard;
+    return;
+  }
+
+  const card = LEFT_CARDS[name];
+  if (!card.url) {
+    showcase.dataset.leftCard = name;
+    return;
+  }
+
+  const oldCanvas = document.querySelector(".showcase__map-canvas");
+  const canvas = oldCanvas.cloneNode(false);
+  canvas.setAttribute("aria-label", card.description);
+  oldCanvas.replaceWith(canvas);
+  document.querySelector(".showcase__map-label").textContent = card.label;
+  document.querySelector(".showcase__map-caption").textContent = card.caption;
+  showcase.dataset.leftCard = "model";
+  disposeModelViewer = installModelViewer(canvas, {
+    ...card,
+    reducedMotion: prefersReducedMotion,
+  });
+}
+
 function resize() {
   const { clientWidth: width, clientHeight: height } = stage;
   renderer.setSize(width, height, false);
@@ -208,14 +293,31 @@ function render() {
   cssRenderer.render(scene, camera);
 }
 
-window.addEventListener("pointermove", (event) =>
-  trackPointer(event.clientX, event.clientY),
-);
+window.addEventListener("pointermove", (event) => {
+  if (event.target.closest?.(".showcase__map")) {
+    pointer.active = false;
+    return;
+  }
+  trackPointer(event.clientX, event.clientY);
+});
 document.documentElement.addEventListener(
   "mouseleave",
   () => (pointer.active = false),
 );
 window.addEventListener("resize", resize);
+sideCardsHidden.addEventListener("change", syncLeftCard);
+window.addEventListener("message", (event) => {
+  if (event.origin !== window.location.origin) return;
+  if (event.data?.type !== "gift-unlock:stage") return;
+  const { stage, clue } = event.data;
+  const keys = clue ? [`${stage}-${clue}`, stage] : [stage];
+  showInfoStep(keys);
+  const leftCardKey = keys.find((key) => key in STAGE_LEFT_CARDS);
+  if (leftCardKey) {
+    wantedLeftCard = STAGE_LEFT_CARDS[leftCardKey];
+    syncLeftCard();
+  }
+});
 screen = new CSS3DObject(createScreen());
 scene.add(screen);
 resize();

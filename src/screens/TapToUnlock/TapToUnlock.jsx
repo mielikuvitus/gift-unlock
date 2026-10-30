@@ -1,7 +1,5 @@
 import { useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { useGSAP } from "@gsap/react";
-import { createPageUrl } from "@/utils";
 import gsap from "gsap";
 import GiftPreview from "../../components/ar-gift-unlock/GiftPreview/GiftPreview.jsx";
 import DropZone from "../../components/common/DropZone/DropZone.jsx";
@@ -28,7 +26,6 @@ function TapToUnlock({
   huntStartDiscPoints = 0,
   initialDiscPoints = 0,
 }) {
-  const navigate = useNavigate();
   /** Vite URLs may include hashes/query; still treat as SVG for white treatment on dark UI */
   const brandLogoIsSvg = /\.svg(\?|#|$)/i.test(brandLogo);
 
@@ -123,9 +120,9 @@ function TapToUnlock({
             <button
               className="u-btn-primary tap-to-unlock__view-drops-btn"
               type="button"
-              onClick={() => navigate(createPageUrl("CaughtGift"))}
+              onClick={() => window.location.reload()}
             >
-              View Gift
+              Restart
             </button>
           }
           target={discMilestone.target}

@@ -9,7 +9,10 @@
       rel="stylesheet"
     />
     <link rel="icon" type="image/svg+xml" href="/logo.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
     <meta name="theme-color" content="#050a14" />
     <style>
       html {
@@ -24,29 +27,305 @@
   <body>
     <div id="root"></div>
     <main class="showcase">
+      <a class="showcase__back" href="https://pixelation.io"
+        >back to portfolio</a
+      >
       <div class="showcase__stage">
         <canvas class="showcase__canvas" aria-hidden="true"></canvas>
       </div>
+      <aside class="showcase__map u-glass-card">
+        <p class="showcase__info-eyebrow showcase__map-label"></p>
+        <canvas class="showcase__map-canvas"></canvas>
+        <p class="showcase__map-caption"></p>
+      </aside>
+      <aside class="showcase__camera-access u-glass-card">
+        <p class="showcase__info-eyebrow">Camera access screen</p>
+        <div
+          class="showcase__camera-access-preview u-glass-warning-card u-glass-card u-glass-card--warning"
+        >
+          <div class="u-glass-warning-card__icon-wrap">
+            <svg
+              class="u-glass-warning-card__icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              aria-hidden="true"
+            >
+              <path
+                d="M12 3.5 L20.5 20 H3.5 Z"
+                stroke="currentColor"
+                stroke-linejoin="round"
+                stroke-width="2"
+              />
+              <path d="M11.25 9h1.5v5.25h-1.5V9z" fill="currentColor" />
+              <circle cx="11.975" cy="16.5" r="1.125" fill="currentColor" />
+            </svg>
+          </div>
+          <p class="u-glass-warning-card__title">Camera access needed</p>
+          <ol class="u-glass-warning-card__steps">
+            <li>Open your phone's Settings</li>
+            <li>Find your browser (Chrome or Safari) → Camera</li>
+            <li>Set to Allow, then come back and tap Try Again</li>
+          </ol>
+          <span class="u-btn-glass u-glass-warning-card__btn">Try Again</span>
+        </div>
+        <p class="showcase__map-caption">
+          Shown in the app when camera access is blocked
+        </p>
+      </aside>
       <aside class="showcase__info u-glass-card">
         <p class="showcase__info-eyebrow">Interactive demo</p>
-        <h1 class="showcase__info-title">AR Gift Unlock</h1>
-        <p class="showcase__info-text">
-          You're in the demo space. At each stop you get a clue and a 3D map of
-          the space. Your job is to find the next QR code to unlock a new clue.
-        </p>
-        <p class="showcase__info-text">
-          Clear all three stops to unlock the gift in AR.
-        </p>
-        <ul class="showcase__info-tips">
-          <li>Use the <strong>DEMO only: use fake QR</strong> button to skip scanning.</li>
-          <li>Move your cursor to tilt the phone, just like moving a real iPhone.</li>
-        </ul>
+        <div class="showcase__info-step" data-step="intro">
+          <h1 class="showcase__info-title">AR Gift Unlock</h1>
+          <p class="showcase__info-text">
+            You're in the demo space. At each stop you get a clue and a 3D map
+            of the space. Your job is to find the next QR code to unlock a new
+            clue.
+          </p>
+          <p class="showcase__info-text">
+            Clear all three stops to unlock the gift in AR.
+          </p>
+          <ul class="showcase__info-tips">
+            <li>
+              Move your cursor to tilt the phone, just like moving a real
+              iPhone.
+            </li>
+            <li>
+              Client's IP (logos and branding) has been removed from the demo at
+              their request.
+            </li>
+          </ul>
+          <p class="showcase__info-note">
+            <svg
+              class="showcase__info-note-icon"
+              viewBox="0 -2 24 24"
+              aria-hidden="true"
+            >
+              <path
+                d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.6 10.8c.6.5 1 1.2 1 2V16h5.2v-.2c0-.8.4-1.5 1-2A6 6 0 0 0 12 3z"
+              />
+              <path
+                d="M12 1V-1M17.7 3.3l1.8-1.8M6.3 3.3 4.5 1.5M20 9h2.5M4 9H1.5"
+              />
+            </svg>
+            <span>
+              The zooming effect on the page is a CSS animation I made at the
+              client's request.
+            </span>
+          </p>
+        </div>
+        <div class="showcase__info-step" data-step="intro2" hidden>
+          <h2 class="showcase__info-title">Mapping the space</h2>
+          <p class="showcase__info-text">
+            I used Scaniverse to capture the space the digital map is made from.
+            I tried to clean up the scanned model, but with only 12 hours for
+            this part I built a simple model of the room in Blender instead.
+          </p>
+          <p class="showcase__info-text">
+            The clue copy is mine too, as I knew where the client wanted to drop
+            the clues.
+          </p>
+        </div>
+        <div class="showcase__info-step" data-step="camera" hidden>
+          <h2 class="showcase__info-title">Scanning a stop</h2>
+          <p class="showcase__info-text">
+            QR codes are scanned with jsQR, which reads each frame of the camera
+            feed in the browser. I made the test QR codes with
+            <a
+              href="https://delphi.tools/tools/qr-genny"
+              target="_blank"
+              rel="noopener noreferrer"
+              >delphitools</a
+            >.
+          </p>
+          <ul class="showcase__info-tips">
+            <li>
+              Use the <strong>DEMO only: use fake QR</strong> button to
+              continue. It stands in for scanning the real QR code at the stop.
+            </li>
+            <li>Use the location icon to check the clue again.</li>
+          </ul>
+          <p class="showcase__info-note">
+            <svg
+              class="showcase__info-note-icon"
+              viewBox="0 -2 24 24"
+              aria-hidden="true"
+            >
+              <path
+                d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.6 10.8c.6.5 1 1.2 1 2V16h5.2v-.2c0-.8.4-1.5 1-2A6 6 0 0 0 12 3z"
+              />
+              <path
+                d="M12 1V-1M17.7 3.3l1.8-1.8M6.3 3.3 4.5 1.5M20 9h2.5M4 9H1.5"
+              />
+            </svg>
+            <span>
+              To preserve the user's device battery and avoid heating the
+              device, the camera turns off after 2 minutes.
+            </span>
+          </p>
+        </div>
+        <div class="showcase__info-step" data-step="camera-2" hidden>
+          <h2 class="showcase__info-title">Error recovery</h2>
+          <p class="showcase__info-text">
+            If the user hasn't allowed use of the camera, I wanted to make it
+            easy for them to allow it again and get back to the experience.
+          </p>
+          <ul class="showcase__info-tips">
+            <li>
+              Use the <strong>DEMO only: use fake QR</strong> button to
+              continue.
+            </li>
+          </ul>
+        </div>
+        <div class="showcase__info-step" data-step="camera-3" hidden>
+          <h2 class="showcase__info-title">Camera stability</h2>
+          <p class="showcase__info-text">
+            While testing, my iPhone's camera crashed when the camera was
+            stopped and started again in quick succession. To fix this, each
+            camera start gets its own session, and any stream from an older
+            session is stopped straight away, so only one camera feed is ever
+            open.
+          </p>
+          <ul class="showcase__info-tips">
+            <li>
+              Use the <strong>DEMO only: use fake QR</strong> button to
+              continue.
+            </li>
+          </ul>
+        </div>
+        <div class="showcase__info-step" data-step="camera-clue" hidden>
+          <h2 class="showcase__info-title">Clue overlay</h2>
+          <p class="showcase__info-text">
+            Tap the location icon again to get back to the camera view.
+          </p>
+          <p class="showcase__info-note">
+            <svg
+              class="showcase__info-note-icon"
+              viewBox="0 -2 24 24"
+              aria-hidden="true"
+            >
+              <path
+                d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.6 10.8c.6.5 1 1.2 1 2V16h5.2v-.2c0-.8.4-1.5 1-2A6 6 0 0 0 12 3z"
+              />
+              <path
+                d="M12 1V-1M17.7 3.3l1.8-1.8M6.3 3.3 4.5 1.5M20 9h2.5M4 9H1.5"
+              />
+            </svg>
+            <span>
+              The clue opens as an overlay on top of the camera view. The camera
+              is switched off while it's open, to save battery.
+            </span>
+          </p>
+        </div>
+        <div class="showcase__info-step" data-step="disc-checkpoint" hidden>
+          <h2 class="showcase__info-title">Modelling the coin</h2>
+          <p class="showcase__info-text">
+            I researched different coins first, then made an SVG version of the
+            design and brought it into Blender, where I built the final model.
+          </p>
+          <p class="showcase__info-text">
+            The sounds are from
+            <a
+              href="https://freesound.org"
+              target="_blank"
+              rel="noopener noreferrer"
+              >freesound.org</a
+            >.
+          </p>
+          <p class="showcase__info-note">
+            <svg
+              class="showcase__info-note-icon"
+              viewBox="0 -2 24 24"
+              aria-hidden="true"
+            >
+              <path
+                d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.6 10.8c.6.5 1 1.2 1 2V16h5.2v-.2c0-.8.4-1.5 1-2A6 6 0 0 0 12 3z"
+              />
+              <path
+                d="M12 1V-1M17.7 3.3l1.8-1.8M6.3 3.3 4.5 1.5M20 9h2.5M4 9H1.5"
+              />
+            </svg>
+            <span>
+              The client wanted a vibration when the QR code was found, but
+              Safari doesn't support the Vibration API, so we had to drop it.
+            </span>
+          </p>
+        </div>
+        <div class="showcase__info-step" data-step="disc-checkpoint-3" hidden>
+          <h2 class="showcase__info-title">Motion design</h2>
+          <p class="showcase__info-text">
+            I iterated on both rolling and falling coins before choosing the
+            falling coins.
+          </p>
+          <p class="showcase__info-text">
+            I tried different approaches to visualising how the coins would
+            land. This was the simplest version, with the coins landing in a
+            tower rather than a pile.
+          </p>
+        </div>
+        <div class="showcase__info-step" data-step="clue-detail-2" hidden>
+          <h2 class="showcase__info-title">Performance optimization</h2>
+          <p class="showcase__info-text">
+            Every 3D model is kept light so mobile performance doesn't suffer.
+            The models are compressed with meshopt and their textures are
+            converted to WebP at reduced sizes.
+          </p>
+          <p class="showcase__info-text">
+            The map model relies on colour and lighting instead of large
+            textures, which keeps it at 77 KB.
+          </p>
+          <ul class="showcase__info-tips">
+            <li>
+              Each 3D view caps its pixel ratio at 2 and frees its memory as
+              soon as you leave the screen.
+            </li>
+          </ul>
+        </div>
+        <div class="showcase__info-step" data-step="clue-detail-3" hidden>
+          <h2 class="showcase__info-title">Dynamic pin positions</h2>
+          <p class="showcase__info-text">
+            The map and the location pin are two separate models. Each pin's
+            position is part of the checkpoint data in the data model I was
+            given, so the backend can move a stop's pin whenever the layout
+            changes.
+          </p>
+          <p class="showcase__info-text">
+            In this demo the positions are still mocked.
+          </p>
+        </div>
+        <div class="showcase__info-step" data-step="ar-gift-reveal" hidden>
+          <h2 class="showcase__info-title">The Wow effect</h2>
+          <p class="showcase__info-text">
+            The gift pops open in AR. I wanted the user to be able to tilt the
+            phone and view the gift from different directions.
+          </p>
+          <p class="showcase__info-text">
+            I learned how to use a timeline to swap the gift for the product
+            model from
+            <a
+              href="https://www.youtube.com/watch?v=fyj4VBwSS20"
+              target="_blank"
+              rel="noopener noreferrer"
+              >this YouTube video</a
+            >. Thank you, Josie!
+          </p>
+          <p class="showcase__info-text">
+            I modelled each piece of confetti individually and created the
+            different paths they fall along. The reveal took me 3 days.
+          </p>
+          <ul class="showcase__info-tips">
+            <li>
+              Move your cursor to tilt the phone and see the gift from different
+              sides.
+            </li>
+          </ul>
+        </div>
         <a
           class="showcase__info-link"
           href="https://github.com/mielikuvitus/gift-unlock"
           target="_blank"
           rel="noopener noreferrer"
-        >View the code on GitHub</a>
+          >View the code on GitHub</a
+        >
       </aside>
       <footer class="showcase__credit">
         <p>
@@ -54,8 +333,10 @@
           uses your computer's front camera instead.
         </p>
         <p>
-          "<a href="https://skfb.ly/pqWYx">iPhone 16 Pro Max</a>" by MajdyModels,
-          <a href="http://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>, modified
+          "<a href="https://skfb.ly/pqWYx">iPhone 16 Pro Max</a>" by
+          MajdyModels,
+          <a href="http://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>,
+          modified
         </p>
       </footer>
     </main>
