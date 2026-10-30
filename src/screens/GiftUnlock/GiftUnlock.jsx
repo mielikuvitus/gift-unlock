@@ -46,9 +46,11 @@ function GiftUnlock() {
 
   const clueNumber = claimedCheckpointIds.length + 1;
 
+  const showcaseStage = arFinalDiscMilestone ? "gift-dropped" : stage;
+
   useEffect(() => {
-    notifyShowcaseStage(stage, clueNumber);
-  }, [stage, clueNumber]);
+    notifyShowcaseStage(showcaseStage, clueNumber);
+  }, [showcaseStage, clueNumber]);
 
   useEffect(() => {
     let cancelled = false;

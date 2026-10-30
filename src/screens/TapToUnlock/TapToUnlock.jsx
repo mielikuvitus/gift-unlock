@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import GiftPreview from "../../components/ar-gift-unlock/GiftPreview/GiftPreview.jsx";
@@ -8,6 +8,7 @@ import LogoSparkles from "../../animations/LogoSparkles/LogoSparkles.jsx";
 import { buildFinalDiscProgressMilestone } from "../../lib/buildFinalDiscProgressMilestone.js";
 import { useDropZoneHighlight } from "../../hooks/useDropZoneHighlight.js";
 import DiscPointsProgress from "../DiscPointsProgress/DiscPointsProgress.jsx";
+import { notifyShowcaseStage } from "../../lib/notifyShowcaseStage.js";
 import { avoidOrphanLastLine } from "./utils";
 import "../GiftUnlock/GiftUnlock.css";
 import "./TapToUnlock.css";
@@ -36,6 +37,11 @@ function TapToUnlock({
   const [dropSuccess, setDropSuccess] = useState(false);
   const [discMilestone, setDiscMilestone] = useState(null);
   const [discPoints] = useState(initialDiscPoints);
+
+  useEffect(() => {
+    if (dropSuccess && discMilestone) notifyShowcaseStage("gift-dropped");
+  }, [dropSuccess, discMilestone]);
+
   const { dropZoneRef, dragProps, dropZoneProps, resetDropZoneHighlight } =
     useDropZoneHighlight();
   /** Sync guard: React state updates async — prevents double taps / rapid clicks from stacking timeouts */
